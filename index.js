@@ -23,6 +23,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Habilitar cors
 app.use(cors());
 
+//Carpeta publica
+app.use(express.static('uploads'));
+
 //Definir dominio desde el cual se recibiran peticiones
 const whiteList = [process.env.FRONTEND_URL];
 const corsOptions = {
@@ -40,8 +43,6 @@ const corsOptions = {
 //Rutas de la app
 app.use('/', routes());
 
-//Carpeta publica
-app.use(express.static('uploads'));
 
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 5000;
