@@ -16,15 +16,15 @@ mongoose.connect(process.env.DB_URL, {
 //Crear el servidor
 const app = express();
 
+//Carpeta publica
+app.use(express.static('uploads'));
+
 //Habilitar body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //Habilitar cors
 app.use(cors());
-
-//Carpeta publica
-app.use(express.static('uploads'));
 
 //Definir dominio desde el cual se recibiran peticiones
 const whiteList = [process.env.FRONTEND_URL];
